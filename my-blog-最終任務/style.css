@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap');
+/* 引入的外部資源要放在最前面，這樣後面寫的樣式才能正確的取用到 */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    /* outline: solid 1px; */
+}
+/* 不用再去計算padding&border；outline為輔助檢視切版排版*/
+
+img{
+  /* display: block; img是行內元素，會受到基準線對齊的影響，調整基線對齊的方式，通常會使用下方（副作用比較小？）*/
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  /* img的預設不會去適應父容器的尺寸，所以要設定width: 100%＆height: auto;來強制伸縮 */
+} 
+a{
+	/* a標籤也是行內元素，上下空間沒辦法推，只有左有可以 */
+	/* display: inline-block;不使用block是因為他會強制站滿一整行，但連結不一定會站滿一整行，inline-block佔據空間不會這麼多，同時帶有區塊元素的特性，會撐出上下空間*/
+	display: inline-block;
+	text-decoration: none;
+	color: #4b4b4b;
+	/* color: inherit;為繼承父層的用法，會根據父層的元素來變化 */
+}
+/* 以上為通用設定，需先設定完成，再來觀察設計稿 */
+/* 
+1.觀察設計稿大部分的樣式是哪些
+2.觀察a標籤會用在哪、共同特徵
+3.觀察字體、字重(font-weight) 
+4.觀察行高（line-height），文字的尺寸是由line-height決定，而非font-size，且也不建議寫死，用倍數是比較好的做法
+5.觀察字級（font-size），若為16px就無需而外設定（網頁預設大小）
+6.觀察設計師的Guideline，變事主色、輔色
+7.觀察間距，figma按住alt就可以查看，建議統一推擠方向，遵循一律向右或向下，這樣後續維護上會比較輕鬆
+8.使用contianer來限制寬度，觀察選取網頁中貼齊格線的兩個元素或點擊整個頁面右下角會有layout guide
+
+
+*/
+
+
+body{
+	font-family: "Noto Sans TC", sans-serif;
+	/* 設計稿都是此字體，所以可以直接套用於body來做繼承，因為前面的CSS reset有寫到font: inherit;所以才會繼承 */
+	/* 字體後會要補上sans-serif通用字體，若字體引入失敗電腦會找替代的字體 */
+	font-weight: 500;
+	line-height: 1.5;
+}
+
+.navbar{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   max-width: 100%;
+   padding: 24px 24px;
+   gap: 24px;
+}
+
+.navbar_btn{
+   color: black;
+   font-size: 28px;
+   font-weight: bold;
+}
+
+.banner{
+  display: flex;
+  height: calc(100vh-90px);
+  max-width: 100%;
+}
+
+@media(max-width: 992px){
+	.banner{
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+.banner_left {
+  max-width: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.banner_right {
+  display: flex;
+  width: 50%;
+  background-image: url("https://github.com/hexschool/2022-web-layout-training/blob/main/2025-web-camp/mobile/index/Hero%20Section2.png?raw=true");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-left: 80px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+}
+
+h1 {
+  font-size: 120px;
+}
+
+.banner_content {
+  color: #0027d5;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.main_article {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+@media(max-width: 992px){
+	.main_article{
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+.main_article_left {
+  width: 50%;
+}
+
+.main_article_right {
+  width: 50%;
+  align-self: center;
+}
+
+.main_article_content {
+  padding-left: 24px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main_article_right .hashtag{
+	font-size: 24px;
+	color: #0027D5;
+	margin-right: 8px;
+	margin-bottom: 8px;
+}
+
+.main_article_right .title {
+	font-size: 28px;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+.main_article_right .text {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	/* 隱藏多行溢出文字 */
+	margin-bottom: 16px;
+  } 
+
+.search {
+	width: 1296px;
+	margin: 0 auto;
+}
+
+.search_btn {
+	border: solid 1px #000;
+	padding: 16px 16px;
+	border-radius: 80px;
+	padding-right: 318px;
+}
+
+.container{
+	max-width: 1296px;
+	margin: 0 auto;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.article-list{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 80px 24px;
+	/* gap的作用為只在元素之間製造空間 */
+	/* justify-content: space-between; */
+	/* flex預設換行是nowrap所以要設定wrap */
+	/* 使用justify-content: space-between;時要注意推開的元素是不是可以剛好撐滿父容器 */
+}
+
+.card{
+	width: 416px;
+}
+
+.card-head{
+	margin-bottom: 16px;
+} 
+
+.card .text {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	/* 隱藏多行溢出文字 */
+	margin-bottom: 16px;
+
+  }
+
+.card .hashtag{
+	font-size: 24px;
+	color: #0027D5;
+	margin-right: 8px;
+}
+
+.hottag{
+	background: #0027D5;
+	color: white;
+	padding: 6px 12px;
+	border-radius: 40px;
+}
+
+.card .title{
+	font-size: 28px;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+.btn{
+	border: solid 1px #000;
+	padding: 8px 16px;
+	border-radius: 80px;
+}
+
+.btn:hover{
+	background: #000;
+	color: white;
+}
+
+.footer_mail {
+	background-color: #FFFFFF;
+	font-size: 34px;
+	padding: 80px 0;
+	text-align: center;
+}
+
+.footer {
+	background-color: #FFFFFF;
+	padding: 24px 0;
+	text-align: center;
+}
+
